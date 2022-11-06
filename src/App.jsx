@@ -4,8 +4,8 @@ import Board from "./components/board";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ResetButton from "./components/ResetButton";
 import MinimaxTree from "./components/Tree";
-import PureModal from 'react-pure-modal';
-import 'react-pure-modal/dist/react-pure-modal.min.css';
+import PureModal from "react-pure-modal";
+import "react-pure-modal/dist/react-pure-modal.min.css";
 
 const winningConditions = [
   [0, 1, 2],
@@ -26,7 +26,7 @@ function App() {
   const [gameStatus, setGameStatus] = useState("You VS Computer");
   const [matched, setMatched] = useState(null);
   const [firstTime, setFirstTime] = useState(true);
-  const [maxDepth , setMaxDepth] = useState(3);
+  const [maxDepth, setMaxDepth] = useState(3);
   const [minimaxStates, setMinimaxState] = useState([]);
   const [showTree, setShowTree] = useState(false);
 
@@ -54,9 +54,9 @@ function App() {
       let new_board = [...board];
       let bestScore = -Infinity;
       let bestMove = null;
-      
-      let new_state = {states: [...board], score: 0, childs: []}
-      
+
+      let new_state = { states: [...board], score: 0, childs: [] };
+
       if (winner === null) {
         for (let i = 0; i < new_board.length; i++) {
           if (new_board[i] === null) {
@@ -69,14 +69,14 @@ function App() {
             }
           }
         }
-        console.log("here")
+        console.log("here");
         new_board[bestMove] = 2;
         new_state.score = bestScore;
         setBoard(new_board);
-        setMinimaxState(currentState => [...currentState, new_state])
+        setMinimaxState((currentState) => [...currentState, new_state]);
       }
       SwitchTurn();
-      
+
       return new_board;
     }
   }
@@ -84,7 +84,7 @@ function App() {
   function GameIsOver(playervalue, board_data) {
     // console.log(playervalue)
     for (let i = 0; i < winningConditions.length; i++) {
-      let j = winningConditions[i]
+      let j = winningConditions[i];
       if (
         board_data[j[0]] === board_data[j[1]] &&
         board_data[j[1]] === board_data[j[2]] &&
@@ -93,7 +93,7 @@ function App() {
         return playervalue;
       }
     }
-    
+
     for (let i = 0; i < board_data.length; i++) {
       if (board_data[i] === null) {
         return null;
@@ -104,7 +104,7 @@ function App() {
   }
 
   function Minimax(new_board, depth, isMaximizer, board_states) {
-    if (depth >= maxDepth){
+    if (depth >= maxDepth) {
       return 0;
     }
     let result_checker = GameIsOver(isMaximizer ? 2 : 1, new_board);
@@ -121,15 +121,15 @@ function App() {
 
     if (isMaximizer) {
       let best_score = -Infinity;
-      let board_data = {states: [...new_board], score: 0, childs: []};
+      let board_data = { states: [...new_board], score: 0, childs: [] };
       let bestMove = null;
       for (let i = 0; i < new_board.length; i++) {
         if (new_board[i] === null) {
           new_board[i] = 2;
-          let score = Minimax(new_board, depth+1, false, board_data.childs);
+          let score = Minimax(new_board, depth + 1, false, board_data.childs);
           new_board[i] = null;
           best_score = Math.max(score, best_score);
-          if(score > best_score){
+          if (score > best_score) {
             bestMove = i;
           }
         }
@@ -138,23 +138,23 @@ function App() {
       board_data.score = best_score;
       board_states.push(board_data);
       return best_score;
-    }else{
+    } else {
       let best_score = Infinity;
-      let board_data = {states: [...new_board], score: 0, childs: []};
+      let board_data = { states: [...new_board], score: 0, childs: [] };
       let bestMove = null;
       for (let i = 0; i < new_board.length; i++) {
         if (new_board[i] === null) {
           new_board[i] = 1;
-          let score = Minimax(new_board, depth+1, true, board_data.childs);
+          let score = Minimax(new_board, depth + 1, true, board_data.childs);
           new_board[i] = null;
           best_score = Math.min(score, best_score);
-          if(score < best_score){
+          if (score < best_score) {
             bestMove = i;
           }
         }
       }
       board_data.states[bestMove] = 1;
-      board_data.score = best_score
+      board_data.score = best_score;
       board_states.push(board_data);
       return best_score;
     }
@@ -171,7 +171,7 @@ function App() {
     setIsFull(false);
     setGameStatus("You VS Computer");
     setMatched(null);
-    setMinimaxState([])
+    setMinimaxState([]);
   }
 
   function CheckBoard(new_board) {
@@ -211,16 +211,16 @@ function App() {
       if (board_data) {
         CheckBoard(board_data);
       }
-      console.log(minimaxStates)
+      console.log(minimaxStates);
     }
   }, [playerTurn]);
 
   return (
     <>
       <div className=" m-4 d-flex justify-content-center">
-      <button onClick={onOpenModal} className="buttontree">
-        Show Minimax Tree
-      </button>
+        <button onClick={onOpenModal} className="buttontree">
+          Show Minimax Tree
+        </button>
       </div>
       <div className="row m-0">
         <div className="col-lg-12 col-md-12 col-sm-12 p-0 m-0">
@@ -248,18 +248,19 @@ function App() {
         </div> */}
       </div>
       <PureModal
-      header="Minimax Tree"
-      isOpen={showTree}
-      closeButton="X"
-      closeButtonPosition="header"
-      width="100vw"
-      onClose={() => {
-        onCloseModal()
-        return true;
-      }}
-    >
-      <MinimaxTree boardMap={minimaxStates} board={board}/>
-    </PureModal>;
+        header="Minimax Tree"
+        isOpen={showTree}
+        closeButton="X"
+        closeButtonPosition="header"
+        width="100vw"
+        onClose={() => {
+          onCloseModal();
+          return true;
+        }}
+      >
+        <MinimaxTree boardMap={minimaxStates} board={board} />
+      </PureModal>
+      ;
     </>
   );
 }
