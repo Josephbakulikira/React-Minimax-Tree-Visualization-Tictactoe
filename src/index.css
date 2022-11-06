@@ -1,0 +1,27 @@
+#root{
+    --light: white;
+    --dark: #050505;
+	--dark2: rgba(2, 2, 2, 0.5);
+    --success: rgb(0, 255, 106);
+    --danger: rgb(133, 15, 0);
+    --primary: purple;
+    --secondary: #00030f;
+	--borderColor: #94a0b4;
+}
+
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+body {
+	height: 100vh;
+	display: grid;
+	align-items: center;
+	font-family: 'Poppins', sans-serif;
+	background-color: #181818;
+	scroll-behavior: smooth;
+	color: var(--light);
+	font-family: 'Roboto', sans-serif;
+}

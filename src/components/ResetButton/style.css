@@ -1,0 +1,28 @@
+.reset-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid var(--dark2);
+    width: 200px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:  all 0.5s;
+    background-color: var(--dark);
+    color: white;
+
+}
+
+.reset-button span{
+    font-size: 15px;
+    font-family: 'Press Start 2P', cursive;
+
+}
+
+.reset-button:hover{
+    background-color: var(--secondary);
+    border-color: white;
+    font-weight: bold;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

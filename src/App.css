@@ -1,0 +1,34 @@
+
+.board-container{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.game-status{
+    text-align: center;
+}
+
+.myText{
+    color: white;
+    text-transform: capitalize;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.buttontree {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    background: rgb(4, 63, 131);
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Press Start 2P', cursive;
+    border: none;
+    box-shadow: 0 5px 15px rgba(4, 63, 131, .4);
+  }
+  
+  .buttontree:hover {
+    color: rgb(255, 255, 255);
+    box-shadow: 0 10px 20px rgba(4, 63, 131, .7);
+  }

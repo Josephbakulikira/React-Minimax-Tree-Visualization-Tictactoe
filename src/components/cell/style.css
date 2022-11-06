@@ -1,0 +1,43 @@
+.cellBox{
+    display: grid;
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgb(0, 103, 238);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    background-color: rgb(3, 0, 14);
+    backdrop-filter: blur(30px);
+}
+
+.cellText{
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--light);
+    text-shadow:1px 1px 10px rgba(255, 255, 255, 0.2), 1px 1px 10px rgba(255, 255, 255, 0.1);
+    font-family: 'Press Start 2P', cursive;
+}
+
+.cellBox:hover{
+    background-color: rgb(0, 87, 128);
+}
+
+.won1 {
+    background: var(--success) !important;
+}
+.won2 {
+    background: var(--danger) !important;
+}
+
+.won1 .cellText{
+    color: white;
+}
+
+.won2 .cellText{
+    color: white;
+}
+
+.isfull .cellText{
+    color: gray;
+}
