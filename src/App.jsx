@@ -248,7 +248,7 @@ function App() {
         </div> */}
       </div>
       <PureModal
-        header="Minimax Tree"
+        header={`Minimax Tree - DEPTH = ${maxDepth}`}
         isOpen={showTree}
         closeButton="X"
         closeButtonPosition="header"
