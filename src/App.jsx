@@ -6,6 +6,7 @@ import ResetButton from "./components/ResetButton";
 import MinimaxTree from "./components/Tree";
 import PureModal from "react-pure-modal";
 import "react-pure-modal/dist/react-pure-modal.min.css";
+import {BsGithub} from 'react-icons/bs'
 
 const winningConditions = [
   [0, 1, 2],
@@ -217,7 +218,9 @@ function App() {
 
   return (
     <>
+      
       <div className=" m-4 d-flex justify-content-center">
+      
         <button onClick={onOpenModal} className="buttontree">
           Show Minimax Tree
         </button>
@@ -240,6 +243,11 @@ function App() {
           <br />
           <div className="d-flex justify-content-center">
             <ResetButton handleReset={handleReset} />
+          </div>
+          <div className="d-flex justify-content-center">
+          <a href="https://github.com/Josephbakulikira/React-Minimax-Tree-Visualization-Tictactoe" target="_blank" className="buttontree " style={{width: "250px", textAlign: 'center', backgroundColor: '#4078c0'}} >
+            <BsGithub/> <span className="m-2">Source Code</span>
+          </a>
           </div>
         </div>
         {/* <div className="col-lg-12 col-md-12 col-sm-12 m-0 p-0">
