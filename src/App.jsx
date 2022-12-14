@@ -7,6 +7,7 @@ import MinimaxTree from "./components/Tree";
 import PureModal from "react-pure-modal";
 import "react-pure-modal/dist/react-pure-modal.min.css";
 import {BsGithub} from 'react-icons/bs'
+import {FaPlusCircle, FaMinusCircle} from 'react-icons/fa'
 
 const winningConditions = [
   [0, 1, 2],
@@ -70,7 +71,6 @@ function App() {
             }
           }
         }
-        console.log("here");
         new_board[bestMove] = 2;
         new_state.score = bestScore;
         setBoard(new_board);
@@ -109,7 +109,6 @@ function App() {
       return 0;
     }
     let result_checker = GameIsOver(isMaximizer ? 2 : 1, new_board);
-    // console.log(result_checker)
     if (result_checker !== null) {
       if (result_checker === 1) {
         return -1;
@@ -155,6 +154,7 @@ function App() {
         }
       }
       board_data.states[bestMove] = 1;
+      console.log(board_data.states[bestMove])
       board_data.score = best_score;
       board_states.push(board_data);
       return best_score;
@@ -212,9 +212,30 @@ function App() {
       if (board_data) {
         CheckBoard(board_data);
       }
-      console.log(minimaxStates);
+      // console.log(minimaxStates);
     }
   }, [playerTurn]);
+
+  function handleChangeDepth(value){
+    let new_val = value
+    if (new_val < 1){
+      setMaxDepth(1)
+      alert("Minimum is 1")
+    }else if (new_val > 6){
+      setMaxDepth(6)
+      alert("Maximum is 6")
+    }else{
+      setMaxDepth(new_val)
+    }
+    console.log(new_val)
+  }
+
+  function depthIncrement(){
+    handleChangeDepth(maxDepth+1)
+  }
+  function depthDecrement(){
+    handleChangeDepth(maxDepth-1)
+  }
 
   return (
     <>
@@ -225,6 +246,18 @@ function App() {
           Show Minimax Tree
         </button>
       </div>
+      <div className=" m-4 d-flex justify-content-center">
+        <button className="btn btn-danger w h-100" onClick={depthDecrement}> <FaMinusCircle/> </button>
+        <input className="m-2 mt-0 text-center form-control" style={{width: "50px"}} placeholder="depth" value={maxDepth} type="number" onChange={handleChangeDepth} />
+        <button className="btn btn-success w h-100" onClick={depthIncrement}> <FaPlusCircle/> </button>
+      </div>
+      {
+        maxDepth > 4 && (
+          <div className=" m-4 d-flex justify-content-center">
+          <p className="text-center text-info">Slow performance when the depth is greater than 4 - (<strong>min: 1, max: 6</strong>)</p>
+          </div>
+          )
+      }
       <div className="row m-0">
         <div className="col-lg-12 col-md-12 col-sm-12 p-0 m-0">
           <div className="game-status">
@@ -258,7 +291,7 @@ function App() {
       <PureModal
         header={`Minimax Tree - DEPTH = ${maxDepth}`}
         isOpen={showTree}
-        closeButton="X"
+        closeButton= "X"
         closeButtonPosition="header"
         width="100vw"
         onClose={() => {

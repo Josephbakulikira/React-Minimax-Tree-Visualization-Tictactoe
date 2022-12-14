@@ -1,5 +1,6 @@
 #root{
     --light: white;
+	--light2: rgba(255, 255, 255, 0.3);
     --dark: #050505;
 	--dark2: rgba(2, 2, 2, 0.5);
     --success: rgb(0, 255, 106);
@@ -20,8 +21,43 @@ body {
 	display: grid;
 	align-items: center;
 	font-family: 'Poppins', sans-serif;
-	background-color: #181818;
+	background-color: #070420;
 	scroll-behavior: smooth;
 	color: var(--light);
 	font-family: 'Roboto', sans-serif;
+	
+}
+
+.panel-body{
+	background-color: var(--dark) !important;
+	
+}
+.panel-title{
+	background-color: var(--dark) !important;
+	color: white;
+}
+
+.panel .close {
+	text-transform: capitalize;
+    font-family: 'Press Start 2P', cursive;
+	background-color: transparent;
+	color: White;
+	font-size: 30px;
+	text-shadow: 2px 2px  rgba(255, 255, 0, 0.7);
+}
+
+::-webkit-scrollbar {
+	background: var(--dark2);
+	width: 4px;
+	height: 4px;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--light2);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-corner {
+	background-color: #070420;
 }
